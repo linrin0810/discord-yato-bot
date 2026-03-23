@@ -113,7 +113,5 @@ async def on_message(message: discord.Message):
         print("返信内容:", reply)
         await message.reply(reply, mention_author=False)
         print("返信送信後")
-    except Exception as e:
-        print("エラー発生:", e)
 
 bot.run(DISCORD_BOT_TOKEN)
