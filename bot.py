@@ -104,20 +104,13 @@ async def yato_reply(prompt: str) -> str:
 @bot.event
 async def on_message(message: discord.Message):
     print("イベント発火:", message.content)
-    print("raw content:", repr(message.content))
-    print("raw mentions:", message.raw_mentions)
 
     if message.author.bot:
         return
 
-    if bot.user.id in message.raw_mentions:
-        print("返信生成前")
-        content = message.content
-        content = content.replace(f"<@{bot.user.id}>", "")
-        content = content.replace(f"<@!{bot.user.id}>", "")
-        content = content.strip()
+    print("ここ通過した")
 
-        reply = await yato_reply(content or "やぁ")
-        await message.reply(reply, mention_author=False)
+    reply = await yato_reply("テスト")
+    await message.reply(reply)
         
 bot.run(DISCORD_BOT_TOKEN)
