@@ -104,6 +104,15 @@ async def yato_reply(prompt: str) -> str:
 @bot.event
 async def on_message(message: discord.Message):
     print("イベント発火:", message.content)
+    if message.author.bot:
+        return
+    if bot.user in message.mentions:
+        content = message.clean_content.replace(f"@{bot.user.name}", "").strip()
+        print("返信生成前")
+        reply = await reply_as_yato(content or "やぁ")
+        print("返信内容:", reply)
+        await message.reply(reply, mention_author=False)
+        print("返信送信後")
     try:
         print(f"受信: {message.content}")
         if message.author.bot:
