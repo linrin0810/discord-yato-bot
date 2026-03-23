@@ -110,7 +110,7 @@ async def on_message(message: discord.Message):
 
     print("ここ通過した")
 
-    reply = await yato_reply("テスト")
-    await message.reply(reply)
+    reply = await yato_reply(message.content or "やぁ")
+    await message.reply(reply, mention_author=False)
         
 bot.run(DISCORD_BOT_TOKEN)
