@@ -109,7 +109,7 @@ async def on_message(message: discord.Message):
     if bot.user in message.mentions:
         content = message.clean_content.replace(f"@{bot.user.name}", "").strip()
         print("返信生成前")
-        reply = await reply_as_yato(content or "やぁ")
+        reply = await yato_reply(content or "やぁ")
         print("返信内容:", reply)
         await message.reply(reply, mention_author=False)
         print("返信送信後")
