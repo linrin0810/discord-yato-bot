@@ -10,6 +10,10 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+@bot.event
+async def on_message(message: discord.Message):
+    print("イベント発火:", message.content)
+
 intents = discord.Intents.default()
 intents.messages = True
 intents.message_content = True  # これ必須！
