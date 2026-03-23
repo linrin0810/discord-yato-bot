@@ -103,6 +103,7 @@ async def yato_reply(prompt: str) -> str:
 
 @bot.event
 async def on_message(message: discord.Message):
+    print("イベント発火:", message.content)
     try:
         print(f"受信: {message.content}")
         if message.author.bot:
